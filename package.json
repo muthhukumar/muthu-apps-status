@@ -17,7 +17,7 @@
     "build:css": "postcss styles/**/*.css --base styles --dir ./app/styles",
     "build": "npm run build:css:prod && npm run build:remix",
     "prebuild": "npm run clean && echo All clean",
-    "clean": "rimraf public/build ./node_modules/.cache ./app/styles/**.css ./server/* .cache",
+    "clean": "rimraf public/build ./node_modules/.cache ./app/styles/**.css ./server/build/* .cache",
     "postinstall": "remix setup"
   },
   "dependencies": {
