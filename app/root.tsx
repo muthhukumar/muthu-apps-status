@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom'
 import { MetaFunction, LinksFunction, LiveReload } from 'remix'
 
 import { NonFlashOfWrongThemeEls, ThemeProvider, useTheme } from '~/utils/theme-provider'
+import Navbar from './components/Navbar'
 
 export const links: LinksFunction = () => {
   return [
@@ -39,12 +40,16 @@ export const links: LinksFunction = () => {
     },
     { rel: 'stylesheet', href: stylesUrl },
     { rel: 'stylesheet', href: tailwindcssStyles },
+    { rel: 'apple-touch-icon', href: '/favicon/apple-touch-icon.png' },
+    { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon/favicon-32x32.png' },
+    { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16x16.png' },
+    { rel: 'manifest', href: '/favicon/site.webmanifest' },
   ]
 }
 
 export const meta: MetaFunction = () => {
   return {
-    title: 'Muthukumar',
+    title: `Muthu's apps status`,
     description: 'Muthukumar is a frontend developer, who loves to code.',
     viewport: 'width=device-width,initial-scale=1,viewport-fit=cover',
     charSet: 'utf-8',
@@ -58,13 +63,15 @@ function App() {
     <html lang="en" className={theme ?? ''}>
       <head>
         <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
         <Meta />
         <Links />
         <NonFlashOfWrongThemeEls />
       </head>
-      <body className="bg-primary">
-        <Outlet />
+      <body className="bg-primary text-primary">
+        <div className="container max-w-4xl mx-auto">
+          <Navbar />
+          <Outlet />
+        </div>
 
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
