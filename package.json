@@ -1,0 +1,65 @@
+{
+  "private": true,
+  "name": "remix-app-template",
+  "description": "",
+  "license": "",
+  "scripts": {
+    "build:remix": "cross-env NODE_ENV=production remix build",
+    "build:css:prod": "npm run build:css -- --env production",
+    "dev": "pm2-dev ./pm2.config.js",
+    "start": "node ./index.js",
+    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|gql|graphql|mdx|vue)\"",
+    "setup": "npm install && npm run build && npm run validate",
+    "prepare": "husky install",
+    "test": "echo 'add test'",
+    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "validate": "npm run lint",
+    "build:css": "postcss styles/**/*.css --base styles --dir ./app/styles",
+    "build": "npm run build:css:prod && npm run build:remix",
+    "prebuild": "npm run clean && echo All clean",
+    "clean": "rimraf public/build ./node_modules/.cache ./app/styles/**.css ./server/* .cache",
+    "postinstall": "remix setup"
+  },
+  "dependencies": {
+    "@remix-run/express": "0.18.0",
+    "@remix-run/node": "0.18.0",
+    "@remix-run/react": "0.18.0",
+    "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.0.0-beta.0",
+    "remix": "0.18.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "0.18.0",
+    "@types/node": "^16.7.10",
+    "@types/react": "^17.0.20",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.30.0",
+    "autoprefixer": "^10.3.4",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.25.1",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "postcss-import": "^14.0.2",
+    "prettier": "^2.3.2",
+    "tailwindcss": "^2.2.9",
+    "typescript": "^4.4.2"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "sideEffects": true,
+  "lint-staged": {
+    "*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|gql|graphql|mdx|vue)": [
+      "prettier --write"
+    ]
+  }
+}
