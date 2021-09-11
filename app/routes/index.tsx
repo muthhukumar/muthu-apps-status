@@ -43,13 +43,15 @@ export default function Index() {
             const size = urlsStatus.length
             return (
               <div
-                key={status.url + index}
+                key={status.url}
                 className={clsx(
-                  'p-5 px-6 flex items-center justify-between border',
+                  'p-5 px-6 flex items-center justify-between border hover:underline',
                   getCellBorderStyles({ width, index, size }),
                 )}
               >
-                <div className="font-medium">{status.name}</div>
+                <a href={status.url} rel="noreferrer" target="_blank">
+                  <div className="font-medium">{status.name}</div>
+                </a>
                 <StatusIcon isOperational={status.isOperational} />
               </div>
             )
