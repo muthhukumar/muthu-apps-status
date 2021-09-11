@@ -5,7 +5,7 @@ import { Meta, Links, Scripts } from '@remix-run/react'
 import { Outlet } from 'react-router-dom'
 import { MetaFunction, LinksFunction, LiveReload } from 'remix'
 
-import { NonFlashOfWrongThemeEls, ThemeProvider, useTheme } from '~/utils/theme-provider'
+import { NonFlashOfWrongThemeEls, ThemeProvider } from '~/utils/theme-provider'
 
 import Navbar from './components/Navbar'
 
@@ -58,10 +58,10 @@ export const meta: MetaFunction = () => {
 }
 
 function App() {
-  const { theme } = useTheme()
+  // const { theme } = useTheme()
 
   return (
-    <html lang="en" className={theme ?? ''}>
+    <html lang="en" className={'light' ?? ''}>
       <head>
         <meta charSet="utf-8" />
         <Meta />
