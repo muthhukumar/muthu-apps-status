@@ -10,7 +10,7 @@ function useWindowDimensions() {
     setDimensions({ width, height })
   }
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     handleResize()
   }, [])
 

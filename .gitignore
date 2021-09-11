@@ -13,3 +13,5 @@ other/postcss
 .env.production
 .envrc
 
+
+.vercel
